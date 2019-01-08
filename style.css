@@ -1,0 +1,30 @@
+#xxx{
+  background:green;
+  display:block;
+}
+/*canvas默认的display是inline-block，改成block之后对其宽高并没有改变，因为canvas类似于img的性质，不会因你改动了display就随之拉伸。*/
+/*因此需指定其width和height*/
+/*指定width和height之后，用height:100vh;之后，由于其是等比例缩放，所以width也会相应增大，会出现一些bug，所以不建议用css控制canvas的初始宽高*/
+/*如果height用100vh，width用100vw，能扩展到Output整个页面，但是坐标都会放大，所以不可行，不能用css定义宽高*/
+
+body{
+  margin:0;
+  /*border:1px solid red;*/
+}
+/*html{
+  border:1px solid black;
+}*/
+.actions{
+  position:fixed;
+  left:0;
+  bottom:0;
+}
+.actions >#brush{
+  display:none;
+}
+.actions.x >#brush{
+  display:inline-block;
+}
+.actions.x >#eraser{
+  display:none;
+}
