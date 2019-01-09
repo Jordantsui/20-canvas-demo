@@ -12,16 +12,20 @@ ul,ol{
 #xxx{
   background:white;
   display:block;
+  position: fixed;
+  left:0;
+  top: 0;
 }
 /*canvas默认的display是inline-block，改成block之后对其宽高并没有改变，因为canvas类似于img的性质，不会因你改动了display就随之拉伸。*/
 /*因此需指定其width和height*/
 /*指定width和height之后，用height:100vh;之后，由于其是等比例缩放，所以width也会相应增大，会出现一些bug，所以不建议用css控制canvas的初始宽高*/
 /*如果height用100vh，width用100vw，能扩展到Output整个页面，但是坐标都会放大，所以不可行，不能用css定义宽高*/
+/*这里加position最终解决了移动端手指上下拨动时页面滚动的问题*/
 
 body{
   /*border:1px solid red;*/
   overflow: hidden;
-  /*解决移动端手指上下拨动时页面滚动的问题*/
+  /*解决移动端手指上下拨动时页面滚动的问题，但没用，所以还得在JS内解决*/
 }
 /*html{
   border:1px solid black;
@@ -63,14 +67,17 @@ body{
   /*这一句具体什么意思？*/
   transition: all 0.3s;
 }
-.colors>li.red{
-  background:red;
+.colors>li.black{
+  background:black;
 }
 .colors>li.green{
   background: green;
 }
 .colors>li.yellow{
   background: yellow;
+}
+.colors>li.red{
+  background: red;
 }
 .colors>li.active{
   box-shadow:0 0 3px rgba(0,0,0,0.95);

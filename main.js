@@ -1,3 +1,8 @@
+/*document.body.ontouchstart=function(eee){
+  eee.preventDefault()
+}*/
+//解决移动端手指上下拨动时页面滚动的问题，这种方法采用了之后，像保存、清除等其他功能都不能用了，估计JS之间相互干扰
+
 var yyy=document.getElementById('xxx');
 var lineWidth=5;
 
@@ -8,27 +13,38 @@ autoSetCanvasSize(yyy);
 var context = yyy.getContext('2d');
 //上面的这两句是为了便于理解写的，其实可以简化成：var context = xxx.getContext('2d');
 
-//在加下面这几句之前，特意将id命名为red,green等，为什么不对class进行操作
-red.onclick=function(){
-  context.strokeStyle='red'
-  context.fillStyle='red'
-  red.classList.add('active');
+//在加下面这几句之前，特意将id命名为red,green等，为什么不对class进行操作(方方的习惯)
+black.onclick=function(){
+  context.strokeStyle='black'
+  context.fillStyle='black'
+  black.classList.add('active');
   green.classList.remove('active');
   yellow.classList.remove('active');
+  red.classList.remove('active');
 }
 green.onclick=function(){
   context.strokeStyle='green'
   context.fillStyle='green'
   green.classList.add('active');
-  red.classList.remove('active');
+  black.classList.remove('active');
   yellow.classList.remove('active');
+  red.classList.remove('active');
 }
 yellow.onclick=function(){
   context.strokeStyle='yellow'
   context.fillStyle='yellow'
   yellow.classList.add('active');
   green.classList.remove('active');
+  black.classList.remove('active');
   red.classList.remove('active');
+}
+red.onclick=function(){
+  context.strokeStyle='red'
+  context.fillStyle='red'
+  red.classList.add('active');
+  black.classList.remove('active');
+  green.classList.remove('active');
+  yellow.classList.remove('active');
 }
 thin.onclick=function(){
   lineWidth=5;
