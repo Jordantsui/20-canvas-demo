@@ -1,4 +1,5 @@
 var yyy=document.getElementById('xxx');
+var lineWidth=5;
 
 autoSetCanvasSize(yyy);
 
@@ -29,6 +30,25 @@ yellow.onclick=function(){
   green.classList.remove('active');
   red.classList.remove('active');
 }
+thin.onclick=function(){
+  lineWidth=5;
+}
+thick.onclick=function(){
+  lineWidth=10;
+}
+clear.onclick=function(){
+  context.clearRect(0,0,yyy.width,yyy.height);
+}
+save.onclick=function(){
+  var url=yyy.toDataURL('image/png')
+  var a=document.createElement('a')
+  document.body.appendChild(a)
+  a.href=url
+  a.download='我的画作'
+  a.target='_blank'
+  a.click()
+}
+//保存下来的图片背景是透明的，在body,xxx上加background:white也没用；所以估计只能先给画板上一层白色块
 
 
 context.fillStyle = 'blue';
@@ -186,8 +206,8 @@ function drawCircle(x,y,radius){
 function drawLine(x1,y1,x2,y2){
   context.beginPath();
   context.moveTo(x1,y1);
-  context.lineWidth=5;
   //一定要先定义线的宽度，再画线
+  context.lineWidth=lineWidth;
   context.lineTo(x2,y2);
   context.stroke();
   context.closePath();

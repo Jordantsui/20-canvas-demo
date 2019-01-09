@@ -19,7 +19,6 @@ ul,ol{
 /*如果height用100vh，width用100vw，能扩展到Output整个页面，但是坐标都会放大，所以不可行，不能用css定义宽高*/
 
 body{
-  margin:0;
   /*border:1px solid red;*/
   overflow: hidden;
   /*解决移动端手指上下拨动时页面滚动的问题*/
@@ -65,7 +64,7 @@ body{
   transition: all 0.3s;
 }
 .colors>li.red{
-  background: red;
+  background:red;
 }
 .colors>li.green{
   background: green;
@@ -76,4 +75,22 @@ body{
 .colors>li.active{
   box-shadow:0 0 3px rgba(0,0,0,0.95);
   transform: scale(1.2);
+}
+.sizes{
+  position: fixed;
+  right: 20px;
+  top: 10px;
+}
+.sizes>li{
+  margin: 20px 0;
+}
+.sizes>.thin{
+  height: 0;
+  width: 20px;
+  border-top: 3px solid black;
+}
+.sizes>.thick{
+  height: 0;
+  width: 20px;
+  border-top: 6px solid black;
 }
