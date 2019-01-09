@@ -6,17 +6,30 @@ autoSetCanvasSize(yyy);
 
 var context = yyy.getContext('2d');
 //上面的这两句是为了便于理解写的，其实可以简化成：var context = xxx.getContext('2d');
-//填充
-context.fillStyle = 'red';
-context.fillRect(0, 0, 100, 100);
-//矩形左上角横纵坐标以及右下角的横纵坐标
-//fillStyle这一句一定要放在fillRect前面，否则无法定义颜色
-//上面这四句没什么可讨论的，首先获取canvas，再获取其二次元的上下文，再指定其颜色、坐标即可。
-//描边
-context.strokeStyle='yellow';
-context.strokeRect(0,0,100,100);
-//清除
-context.clearRect(50,50,10,10);
+
+//在加下面这几句之前，特意将id命名为red,green等，为什么不对class进行操作
+red.onclick=function(){
+  context.strokeStyle='red'
+  context.fillStyle='red'
+  red.classList.add('active');
+  green.classList.remove('active');
+  yellow.classList.remove('active');
+}
+green.onclick=function(){
+  context.strokeStyle='green'
+  context.fillStyle='green'
+  green.classList.add('active');
+  red.classList.remove('active');
+  yellow.classList.remove('active');
+}
+yellow.onclick=function(){
+  context.strokeStyle='yellow'
+  context.fillStyle='yellow'
+  yellow.classList.add('active');
+  green.classList.remove('active');
+  red.classList.remove('active');
+}
+
 
 context.fillStyle = 'blue';
 context.beginPath();
@@ -41,17 +54,18 @@ listenToUser(yyy);
 
 
 var eraserEnabled=false
+pen.onclick=function(){
+  eraserEnabled=false;
+  pen.classList.add('active');
+  eraser.classList.remove('active');
+}
 eraser.onclick=function(){
   eraserEnabled=true;
-  actions.className='actions x'
+  eraser.classList.add('active');
+  pen.classList.remove('active');
 }
-//JS与css的不同：css里，由于eraser是id，定义时前面应该加"#"；JS里，不用加
-brush.onclick=function(){
-  eraserEnabled=false;
-  actions.className='actions'
-}
-//在讲这种两个按钮的方法之前，讲了可以改变按钮的textContent，以切换橡皮擦和画笔，但是这样会有判断过程，易出bug
-//尽量让一个按钮只做一件事，这样的话没有if-else，代码出bug的机会会小
+//onclick兼容两种设备
+
 
 
 //

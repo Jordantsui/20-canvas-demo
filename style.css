@@ -1,5 +1,16 @@
+ul,ol{
+  list-style:none;
+}
+*{margin: 0;padding:0;}
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
 #xxx{
-  background:green;
+  background:white;
   display:block;
 }
 /*canvas默认的display是inline-block，改成block之后对其宽高并没有改变，因为canvas类似于img的性质，不会因你改动了display就随之拉伸。*/
@@ -10,6 +21,8 @@
 body{
   margin:0;
   /*border:1px solid red;*/
+  overflow: hidden;
+  /*解决移动端手指上下拨动时页面滚动的问题*/
 }
 /*html{
   border:1px solid black;
@@ -17,14 +30,50 @@ body{
 .actions{
   position:fixed;
   left:0;
-  bottom:0;
+  top:0;
+  margin: 20px;
 }
-.actions >#brush{
-  display:none;
+.actions svg{
+  width:1.5em;
+  height:1.5em;
+  transition: all 0.3s;
+  margin: 0 10px;
 }
-.actions.x >#brush{
-  display:inline-block;
+.actions svg.active{
+  fill:red;
+  transform: scale(1.2);
 }
-.actions.x >#eraser{
-  display:none;
+/*若此svg处于激活状态，active是我们在JS里增加的类*/
+/*注意，svg与.active之间不能加空格*/
+/*大小变为原来的1.2倍*/
+/*变大小之后空间不够了，在.actions加margin/padding使其有变大的空间*/
+/*transition加过渡时间*/
+
+.colors{
+  position:fixed;
+  top:50px;
+  left:28px;
+}
+.colors>li{
+  width:20px;
+  height: 20px;
+  border-radius: 50%;
+  /*变成圆圈*/
+  margin: 10px 0;
+  box-shadow:0 0 3px rgba(0,0,0,0.25);
+  /*这一句具体什么意思？*/
+  transition: all 0.3s;
+}
+.colors>li.red{
+  background: red;
+}
+.colors>li.green{
+  background: green;
+}
+.colors>li.yellow{
+  background: yellow;
+}
+.colors>li.active{
+  box-shadow:0 0 3px rgba(0,0,0,0.95);
+  transform: scale(1.2);
 }

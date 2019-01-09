@@ -11,10 +11,21 @@
 <body>
   <canvas id="xxx" width=300 height=300></canvas>
   <div id='actions' class='actions'>
-    <button id='eraser'>橡皮擦</button>
-    <button id='brush'>画笔</button>
+    <svg id=pen class="icon active">
+    <!--默认采用画笔，为了使默认情况下也有变红效果，在pen上加active类-->
+      <use xlink:href="#icon-pen"></use>
+    </svg>
+    <svg id=eraser class="icon">
+      <use xlink:href="#icon-eraser"></use>
+    </svg>
   </div>
+  <ol class='colors'>
+    <li id='red' class='red active'></li>
+    <li id='green' class='green'></li>
+    <li id='yellow' class='yellow'></li>
+  </ol>
   <script language="JavaScript" src="main.js"></script>
   <!--language这句话可以不写-->
+  <script src="//at.alicdn.com/t/font_1005895_x2se1cnxpd.js"></script>
 </body>
 </html>
